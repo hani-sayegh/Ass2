@@ -158,7 +158,7 @@ int main()
 
 
 
-	std::vector<Document> sentenceDocuments;
+	std::vector<Document> sentenceDocuments; //Vector of documents.
 
 	int pos = 0;
 	for (Document& doc : documents)
