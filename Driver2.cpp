@@ -24,7 +24,7 @@ int main()
 	std::ifstream ifs("StopWords.txt"); //Contains the different stop words in sorted order.
 	std::string sw; //Stop word.
 
-	StopWord test;
+	StopWord remover;
 	/*
 	std::vector<std::string> myVec;
 	myVec.push_back("a");
@@ -41,7 +41,7 @@ int main()
 	{
 		if (sw.length() != 1)
 		{
-			test.addStopWord(sw);
+			remover.addStopWord(sw);
 		}
 	}
 
@@ -65,7 +65,7 @@ int main()
 			std::transform(word.begin(), word.end(), word.begin(), ::tolower);
 			finalWord = removePunc(word);
 
-			if (!test.findElement(finalWord))
+			if (!remover.findElement(finalWord))
 			{
 				bool duplicate = false;
 
@@ -281,6 +281,7 @@ int main()
 	{
 
 		double numerator = 0;
+
 		//Does seem to give warning for reuse of i when bulding, can u change settings?
 		for (int i = 0; i != queryVector.size(); ++i)
 		{
@@ -317,7 +318,12 @@ int main()
 
 	sort(sentenceDocuments.begin(), sentenceDocuments.end(), byCosSimValue); //Why not by reference? Maybe
 
-	int top = 10;
+	for (Document doc : sentenceDocuments)
+	{
+		std::cout << doc.getDocName() << std::endl;
+	}
+
+	/*int top = 10;
 	std::cout << "Top " << top << " Documents:-\n" << std::endl;
 	for (Document doc : sentenceDocuments)
 	{
@@ -327,7 +333,7 @@ int main()
 		}
 		std::cout << " -- " << doc << std::endl;
 		--top;
-	}
+	}*/
 
 
 	system("pause");
